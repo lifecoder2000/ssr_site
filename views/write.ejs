@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="/stylesheets/write.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <title>write</title>
+    </head>
+    <body>
+    <!--nav-->
+    <nav>
+        <div class="max">
+            <div class="wrapper">
+                <div class="logo"></div>
+            </div>
+            <div class="wrapper">
+                <button class="white" onclick="location.href='/index.html'">&lt; 돌아가기</button>
+            </div>
+        </div>
+    </nav>
+    <!-- main -->
+    <main>
+        <section id="notice">
+            <h1 class="title first-title">Notice</h1>
+            <% if (isBlocked) { %>
+                <button class="long-box button save no-border">지원 접수가 완료되었습니다.</button>
+            <% } else { %>
+                <button class="long-box button save no-border">SSR에 지원해주셔서 감사합니다.</button>
+                <button class="long-box button save no-border">다음 작성 양식에 맞춰 지원서를 작성해주시기 바랍니다.</button>
+                <button class="long-box button save no-border">본 지원서는 저장과 <a href='/write#load'>불러오기</a>가 가능합니다.</button>
+                <button class="long-box button save no-border">여러번 수정 가능하지만 <strong><i>제출 후 수정은 불가능</i></strong>합니다. 이 점 유의해주시기 바랍니다.</button>
+                <button class="long-box button save no-border">다음 작성 양식을 공격할 시 불이익을 받을 수 있습니다.</button>
+            <% } %>
+        </section>
+        <section id="write">
+            <h1 class="title first-title">Write</h1>
+            <form action="/write" method="post" class="write-form">
+                <input type="text" name="name" class="long-box" placeholder="이름" value="<%= name %>" required><br>
+                <input type="text" name="email" class="long-box" placeholder="Email" value="<%= email %>" required><br>
+                <select name="class" class="short-box">
+                    <option value="<%= classNum %>" selected><%= classNum %></option>
+                    <option value="G1">G1</option>
+                    <option value="U1">U1</option>
+                    <option value="U2">U2</option>
+                    <option value="H1">H1</option>
+                    <option value="H2">H2</option>
+                </select>
+                <select name="number" class="short-box">
+                    <option value="<%= number %>" selected><%= number %></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                </select><br>
+                <select name="position" class="long-box">
+                    <option value="<%= position %>" selected><%= position %></option>
+                    <option value="System hacking">System hacking</option>
+                    <option value="Reverse engineering">Reverse engineering</option>
+                    <option value="Forensic">Forensic</option>
+                    <option value="Web hacking">Web hacking</option>
+                    <option value="Web Developing">Web Developing</option>
+		    		<option vlaue="Android Developing">Android Developing</option>
+					<option vlaue="ETC">ETC</option>
+                </select><br>
+                <input type="password" name="password" class="long-box" placeholder="암호 (저장시 수정 불가)" value="<%= password %>" required><br>
+                <textarea type="text" name="application" class="long-box self-introduce" id="content" placeholder="자기소개서" required><%= application %></textarea><br>
+                <div><span id="countNumber">0/1000</span></div><br>    
+                <input type="submit" name="button" class="short-box button save" value="저장하기" <%= isBlocked ? 'disabled' : '' %>>
+                <input type="submit" name="button" class="short-box button submit" value="제출하기" <%= isBlocked ? 'disabled' : '' %>>
+            </form>
+        </section>
+        
+        <hr noshade color="#6F75E2">
+        
+        <section id="load">
+           <h1 class="title last-title">Load</h1>
+            <form action="/write/load" method="post" class="load-form">
+                <input type="text" name="email" class="short-box" placeholder=" Email">
+                <input type="password" name="password" class="short-box" placeholder=" Password"><br>
+                <input type="submit" name="button" class="long-box button save" value="불러오기" <%= isBlocked ? 'disabled' : '' %>>
+            </form>
+        </section>
+    </main>
+    <!-- footer -->
+    <footer>
+        <p>(c) all right reversed by SSR.</p>
+    </footer>
+    <script src="/javascripts/textCount.js"></script>
+    </body>
+</html>

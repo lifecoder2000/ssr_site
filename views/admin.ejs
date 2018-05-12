@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <meta charset="utf8">
+        <title>Admin Page</title>
+        <link rel="stylesheet" href="/stylesheets/admin.css">
+    </head>
+    <body>
+        <main>
+            <h1>지원서 현황</h1>
+            <h3><a href='/admin/logout'>로그아웃</a></h3>
+            <hr noshade color="#6F75E2" style="text-align: center; width: 600px;">
+            <form action="/admin" method="post">
+                <select name="class">
+                    <option value="None" selected>학과반</option>
+                    <option value="G1">G1</option>
+                    <option value="U1">U1</option>
+                    <option value="U2">U2</option>
+                    <option value="H1">H1</option>
+                    <option value="H2">H2</option>
+                </select>
+                <select name="position">
+                    <option value="None" selected>분야</option>
+                    <option value="System hacking">System hacking</option>
+                    <option value="Reverse engineering">Reverse engineering</option>
+                    <option value="Forensic">Forensic</option>
+                    <option value="Web hacking">Web hacking</option>
+                    <option value="Network hacking">Network hacking</option>
+                    <option value="Programming">Programming</option>
+                </select>
+                <select name="submissionStatus">
+                    <option value="save">저장(All)</option>
+                    <option value="submit">제출</option>
+                </select>
+                <input type="submit" name="button" value="필터">
+            </form>
+            <h2>현재 저장 : <%= count.bySubmitted.saved %>, 제출 : <%= count.bySubmitted.submitted %></h2>
+            <table>
+                <thead>
+                    <th>Email</th>
+                    <th>이름</th>
+                    <th>학과반</th>
+                    <th>분야</th>
+                    <th>자기소개서</th>
+                    <th>제출여부</th>
+                    <th>IP</th>
+                    <th>마지막 저장시간</th>
+                </thead>
+                <tbody>
+                    <% for(let application of applications){ %>
+                        <tr>
+                            <td><%= application.email %></td>
+                            <td><%= application.name %></td>
+                            <td><%= application.class %></td>
+                            <td><%= application.position %></td>
+                            <td><a href='/admin/application/<%= application.email %>'>View</a></td>
+                            <td><%= application.isSubmitted ? 'O' : 'X' %></td>
+                            <td><%= application.clientIp %></td>
+                            <td><%= application.updatedAt.getMonth() + 1 %>월<%= application.updatedAt.getDate() %>일 <%= application.updatedAt.getHours() %>시<%= application.updatedAt.getMinutes() %>분</td>   
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+            <h2>총 <%= applications.length %>개의 지원서 검색</h2>
+            <hr noshade color="#6F75E2" style="text-align: center; width: 600px;">
+            <h2>총 저장</h2>
+            <table>
+                <thead>
+                    <% for(let i in count.savedByClass) { %>
+                        <th><%= i %></th>
+                    <% } %>
+                    <th>합계</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <% for(let i in count.savedByClass) { %>
+                            <td><%= count.savedByClass[i] %></td>
+                        <% } %>
+                        <td><%= count.bySubmitted.saved %></td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr noshade color="#6F75E2" style="text-align: center; width: 600px;">
+            <h2>총 제출</h2>
+            <table>
+                <thead>
+                    <% for(let i in count.submittedByClass) { %>
+                        <th><%= i %></th>
+                    <% } %>
+                    <th>합계</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <% for(let i in count.submittedByClass) { %>
+                            <td><%= count.submittedByClass[i] %></td>
+                        <% } %>
+                        <td><%= count.bySubmitted.submitted %></td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr noshade color="#6F75E2" style="text-align: center; width: 600px;">
+            <h2>신청 컨트롤 : <%= isBlocked ? '모집 완료' : '모집 중' %></h2>
+            <h2><a href='/admin/block'><%= isBlocked ? '모집 재개' : '모집 중단' %></a></h2>
+        </main>
+    </body>
+</html>

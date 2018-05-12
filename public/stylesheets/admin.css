@@ -1,0 +1,57 @@
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+* {
+    font-family: 'Hanna', sans-serif;
+    box-sizing: border-box;
+    word-break: keep-all;
+}
+
+body {
+    margin: 0;
+    padding-top: 80px;
+    text-align: center;
+}
+
+table{
+    margin: 0 auto;
+    overflow: auto;
+}
+
+table, th, td{
+    text-align: center;
+    border: 1px solid gray;
+    border-collapse: collapse;
+    padding: 10px;
+}
+
+th{
+    width: 150px;
+}
+
+#usefulTools{
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 80px;
+    padding-top: 10px;
+}
+
+section{
+    border-top: 1px solid black;
+}
+
+textarea {
+    font-size: 15px;
+    border: 1.5px solid gray;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 7px;
+    outline: none;
+    width: 400px;
+    height: 500px;
+    line-height: 150%;
+}
+@media screen and (min-width: 1024px) {
+    textarea {
+        width: 800px;
+    }
+}

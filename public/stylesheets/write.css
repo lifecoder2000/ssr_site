@@ -1,0 +1,203 @@
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+* {
+    font-family: 'Hanna', sans-serif;
+    box-sizing: border-box;
+    word-break: keep-all;
+}
+
+body::-webkit-scrollbar { 
+    display: none; 
+}
+
+body {
+    margin: 0;
+    padding-top: 80px;
+    text-align: center;
+}
+
+.title{
+    color: #6F75E2;
+}
+
+hr {
+    width: 300px;
+    /*margin: 0 auto;*/
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    justify-content: center;
+    top: 0;
+    width: 100vw;
+    height: 80px;
+    background: linear-gradient(to right, #4E54C8, #8F94FB);
+}
+
+.max {
+    display: flex;
+    flex-direction: row;
+    width: 1024px;
+    max-width: 1024px;
+    justify-content: space-between;
+}
+
+nav .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 25px;
+}
+
+nav .wrapper h1 {
+    margin: 0;
+    font-size: 50px;
+    color: white;
+}
+
+button {
+    font-size: 20px;
+    transition: color 0.3s;
+    background: transparent;
+    border-radius: 5px;
+}
+
+button.white {
+    border: 2px solid white;
+    color: white;
+    font-size: 25px;
+    padding: 5px 20px;
+}
+
+.white:hover {
+    background: white;
+    color: #6F75E2;
+}
+
+.save:hover, #countNumber:hover {
+    background:#6F75E2;
+    color: white;
+}
+
+.submit:hover {
+    background: #ff471a;
+    border-color: #ff471a;
+    color: white;
+}
+
+main section {
+    padding: 50px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main section .title {
+    margin: 0;
+    margin-bottom: 50px;
+    font-size: 75px;
+}
+
+input, select, textarea {
+    font-size: 20px;
+    border: 1.5px solid gray;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 7px;
+    outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+    border: 1.5px solid #6F75E2;
+}
+
+select{
+    color: gray;
+}
+
+.long-box{
+    width: 400px;
+}
+
+.short-box{
+    width: 198px;
+}
+
+.self-introduce{
+    height: 200px;
+}
+
+.button{
+    outline: none;
+    margin: 0 auto;
+    padding: 10px;
+    transition: color 0.3s;
+    border: 1.5px solid #6F75E2;
+    background: transparent;
+    font-size: 20px;
+    color: #6F75E2;
+}
+
+.button:disabled {
+    border: 1.5px solid slategray;
+    color: white;
+    background: slategray;
+}
+
+.button:disabled:hover {
+    border: 1.5px solid slategray;
+    color: white;
+    background: slategray;
+}
+
+.no-border {
+    border: none;
+    color: darkslategray;
+}
+
+@media screen and (min-width: 1024px) {
+    .long-box{
+        width: 800px;
+    }
+
+    .short-box{
+        width: 398px;
+    }
+
+    .self-introduce{
+        height: 400px;
+    } 
+}
+
+#countNumber{
+    border: 2px solid #6F75E2;
+    border-radius: 15px;
+    text-align: center;
+    color: #6F75E2;
+    padding: 3px 5px;
+}
+
+footer {
+    width: 100vw;
+    height: 100px;
+    background: linear-gradient(to right, #4E54C8, #8F94FB);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+footer p {
+    padding: 0;
+    color: white;
+    font-size: 25px;
+}
+
+.logo {
+    width: 100px;
+    height: 50px;
+    background-image: url(/images/icon.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
